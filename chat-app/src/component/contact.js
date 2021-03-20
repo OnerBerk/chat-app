@@ -1,19 +1,17 @@
 import "./contact.css"
+import PropTypes from 'prop-types';
 
-const Contact=()=>{
-    const avatarUrl="https://randomuser.me/api/portraits/men/19.jpg";
-    const name ="Öner";
-    const online = true;
+const Contact = (props) => {
 
-    return(
+    return (
         <div className="Contact">
-            <img className="avatar" src={avatarUrl} alt="image avatar"/>
+            <img className="avatar" src={props.avatarUrl} alt="image avatar"/>
 
             <div>
-                <h4 className="name">{name} </h4>
+                <h4 className="name">{props.name} </h4>
                 <p className="status">
-                    <span className="status-online"></span>
-                    <span className="status-text"> { online ? "Online":"Offline" } </span>
+                    <span className={props.status ? "status-online" : "status-offline"}/>
+                    <span className="status-text"> {props.online ? "Online" : "Offline"}</span>
                 </p>
             </div>
 
@@ -21,4 +19,8 @@ const Contact=()=>{
 
     )
 }
+Contact.propTypes = {
+    name: PropTypes.string.isRequired,
+};
+
 export default Contact
